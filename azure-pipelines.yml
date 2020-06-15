@@ -10,10 +10,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    sudo chmod +x unified.sh
+    sudo chmod +x uniform.sh
+    sudo chmod +x artifact.sh
+- script: |    
+    bash uniform.sh
+    bash unified.sh
+    bash artifact.sh
+    
+  displayName: 'Run a build script'
+
+- publish: /home/vsts/work/1/s/Anykernel3/UPDATE-AnyKernel3.zip
+  artifact: UPDATE-AnyKernel3.zip
